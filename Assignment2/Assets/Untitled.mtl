@@ -1,0 +1,22 @@
+
+newmtl Standard5BFF29
+Kd  0.3568628 1 0.1607843
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+
+
+newmtl StandardE12F28
+Kd  0.8823529 0.1843137 0.1568628
+Ks  0 0 0
+Ka  0 0 0
+d  1
+Ns  0
+illum 2
+
+
+

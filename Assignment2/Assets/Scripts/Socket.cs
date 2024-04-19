@@ -5,19 +5,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Socket : MonoBehaviour
 {
-    private IXRSelectInteractable item;
+    private XRBaseInteractable item;
     public string acceptedTag; // Specify the accepted tag for this socket
     public GameObject itemToActivate; // Reference to the item to activate when correct balls are placed
     private bool ballPlaced = false; // Flag to track if correct ball is placed
 
-    public void ItemAdded()
+    public void ItemAdded(XRBaseInteractable addedInteractable)
     {
-        item = GetComponent<XRSocketInteractor>().GetOldestInteractableSelected();
-
+        item = addedInteractable;
+      
         if (item != null)
         {
             // Check if the added item is a ball with the correct tag
-            if (item.CompareTag(acceptedTag))
+            if (item.gameObject.CompareTag(acceptedTag))
             {
                 Debug.Log("Correct ball placed at the socket.");
                 // Set flag to true indicating correct ball is placed

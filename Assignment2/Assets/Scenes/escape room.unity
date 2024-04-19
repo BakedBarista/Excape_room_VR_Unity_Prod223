@@ -1733,6 +1733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9859be4896f4ec940854c281202f1a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptedTag: RedBall
+  itemToActivate: {fileID: 0}
 --- !u!1 &572941352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,10 +3462,11 @@ MonoBehaviour:
       - m_Target: {fileID: 565307463}
         m_TargetAssemblyTypeName: Socket, Assembly-CSharp
         m_MethodName: ItemAdded
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 565307457}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRBaseInteractable,
+            Unity.XR.Interaction.Toolkit
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5487,6 +5490,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9859be4896f4ec940854c281202f1a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceptedTag: GreenBall
+  itemToActivate: {fileID: 0}
 --- !u!4 &1952271463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3408a4b2bff604d4597c74f4b8288247, type: 3}
@@ -6073,10 +6078,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1930957109}
         m_TargetAssemblyTypeName: Socket, Assembly-CSharp
         m_MethodName: ItemAdded
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1930957107}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.XR.Interaction.Toolkit.XRBaseInteractable,
+            Unity.XR.Interaction.Toolkit
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -2,9 +2,21 @@ using UnityEngine;
 
 public class Keypad : MonoBehaviour
 {
-    private string enteredCombination = "";
-    public string correctCombination = "1234"; // Set your desired combination here
-    public GameObject objectToActivate; // Reference to the object you want to activate
+    private static string enteredCombination = "";
+    public string greenCombination = "1010"; // Combination for activating the green ball
+    public string redCombination = "341"; // Combination for activating the red ball
+    public GameObject greenBall; // Reference to the green ball object
+    public GameObject redBall; // Reference to the red ball object
+    public AudioClip clockClueAudio; // Audio clip for clock clue
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        // Set the audio clip to play
+        audioSource.clip = clockClueAudio;
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,17 +34,32 @@ public class Keypad : MonoBehaviour
                     // Clear the entered combination
                     enteredCombination = "";
                 }
+                else if (keyValue == "#")
+                {
+                    // Play clock clue audio when "#" key is pressed
+                    if (clockClueAudio != null)
+                    {
+                        audioSource.Play();
+                    }
+                }
                 else
                 {
                     // Append the key value to the entered combination
                     enteredCombination += keyValue;
-                }
 
-                // Check if entered combination matches the correct combination
-                if (enteredCombination == correctCombination)
-                {
-                    // Activate the object
-                    objectToActivate.SetActive(true);
+                    // Check if entered combination matches the green combination
+                    if (enteredCombination == greenCombination)
+                    {
+                        // Activate the green ball
+                        greenBall.SetActive(true);
+                    }
+
+                    // Check if entered combination matches the red combination
+                    if (enteredCombination == redCombination)
+                    {
+                        // Activate the red ball
+                        redBall.SetActive(true);
+                    }
                 }
             }
         }

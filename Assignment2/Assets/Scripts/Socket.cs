@@ -7,7 +7,7 @@ public class Socket : MonoBehaviour
 {
     private XRBaseInteractable item;
     public string acceptedTag; // Specify the accepted tag for this socket
-    public GameObject itemToActivate; // Reference to the item to activate when correct balls are placed
+    public DoorController doorController;
     private bool ballPlaced = false; // Flag to track if correct ball is placed
 
     public void ItemAdded(XRBaseInteractable addedInteractable)
@@ -50,7 +50,7 @@ public class Socket : MonoBehaviour
             {
                 // If both sockets have correct balls placed, activate the item
                 Debug.Log("Both sockets have correct balls placed.");
-                itemToActivate.SetActive(true);
+                doorController.OpenDoor();
                 return;
             }
         }

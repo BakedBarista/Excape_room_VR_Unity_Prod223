@@ -5,55 +5,32 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Socket : MonoBehaviour
 {
-    private XRBaseInteractable item;
-    public string acceptedTag; // Specify the accepted tag for this socket
-    public DoorController doorController;
-    private bool ballPlaced = false; // Flag to track if correct ball is placed
+    private IXRSelectInteractable item;
+    [SerializeField] private Animator door = null;
+    private static int ballsPlaced = 0;
 
-    public void ItemAdded(XRBaseInteractable addedInteractable)
+    public void ItemAdded()
     {
-        item = addedInteractable;
-      
-        if (item != null)
+        item = GetComponent<XRSocketInteractor>().GetOldestInteractableSelected();
+        ballsPlaced++;
+        if (ballsPlaced == 2)
         {
-            // Check if the added item is a ball with the correct tag
-            if (item.gameObject.CompareTag(acceptedTag))
-            {
-                Debug.Log("Correct ball placed at the socket.");
-                // Set flag to true indicating correct ball is placed
-                ballPlaced = true;
-                CheckBallsPlaced(); // Check if both balls are placed
-            }
-            else
-            {
-                Debug.Log("Incorrect ball placed at the socket.");
-                // Do something when incorrect ball is added (optional)
-            }
+            door.Play("DoorOpen");
         }
+       
+        
+         
+        
+        
     }
 
     public void ItemRemoved()
     {
         item = null;
-        // Reset flag to false indicating no correct ball is placed
-        ballPlaced = false;
+        ballsPlaced--;
+        
         
     }
 
-    private void CheckBallsPlaced()
-    {
-        // Get the other socket
-        Socket[] sockets = FindObjectsOfType<Socket>();
-        foreach (Socket socket in sockets)
-        {
-            if (socket != this && socket.ballPlaced)
-            {
-                // If both sockets have correct balls placed, activate the item
-                Debug.Log("Both sockets have correct balls placed.");
-                doorController.OpenDoor();
-                return;
-            }
-        }
-    }
 }
 

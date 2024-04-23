@@ -20,7 +20,7 @@ public class Keypad : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Controller"))
+        if (other.CompareTag("GameController"))
         {
             // Check if the trigger button is pressed
             if (Input.GetButtonDown("Fire1")) // Assuming Fire1 is the trigger button input

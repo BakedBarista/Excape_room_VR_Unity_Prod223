@@ -34,7 +34,7 @@ public class Keypad : MonoBehaviour
                     // Clear the entered combination
                     enteredCombination = "";
                 }
-                else if (keyValue == "#")
+                else if (keyValue == "Red")
                 {
                     // Play clock clue audio when "#" key is pressed
                     if (clockClueAudio != null)

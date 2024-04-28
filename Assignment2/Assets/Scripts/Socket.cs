@@ -5,32 +5,50 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Socket : MonoBehaviour
 {
-    private IXRSelectInteractable item;
+    private XRSocketInteractor socket;
     [SerializeField] private Animator door = null;
-    private static int ballsPlaced = 0;
+    private static bool greenPlaced = false;
+    private static bool redPlaced = false;
 
-    public void ItemAdded()
+    private void Start()
     {
-        item = GetComponent<XRSocketInteractor>().GetOldestInteractableSelected();
-        ballsPlaced++;
-        if (ballsPlaced == 2)
+        socket = GetComponent<XRSocketInteractor>();
+    }
+
+    public void GreenSocketCheck()
+    {
+        GameObject item = socket.selectTarget.gameObject;
+        if (item.CompareTag("GreenBall"))
+        {
+            greenPlaced = true;
+        } else
+        {
+            greenPlaced = false;
+        }
+        if (greenPlaced && redPlaced)
         {
             door.Play("DoorOpen");
         }
-       
-        
-         
-        
-        
     }
 
-    public void ItemRemoved()
+    public void RedSocketCheck()
     {
-        item = null;
-        ballsPlaced--;
-        
-        
+        GameObject item = socket.selectTarget.gameObject;
+        if (item.CompareTag("RedBall"))
+        {
+            redPlaced = true;
+        }
+        else
+        {
+            redPlaced = false;
+        }
+        if (greenPlaced && redPlaced)
+        {
+            door.Play("DoorOpen");
+        }
     }
+
+
 
 }
 
